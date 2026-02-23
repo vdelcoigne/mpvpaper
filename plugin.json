@@ -1,0 +1,12 @@
+{
+  "id": "mpvpaper",
+  "name": "Mpvpaper",
+  "description": "A plugin that allows having video wallpapers using mpvpaper.",
+  "version": "0.0.1",
+  "author": "Delcoigne Vincent",
+  "icon": "widgets",
+  "type": "widget",
+  "component": "./Main.qml",
+  "settings": "./Settings.qml",
+  "permissions": ["settings_read", "settings_write"]
+}
