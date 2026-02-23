@@ -11,14 +11,14 @@ import qs.Modules.Plugins
 PluginComponent {
     id: root
 
-    readonly property string wallpapersFolder: pluginData.wallpapersFolder || "/home/lapin/Vidéos/AnimatedWallpapers"
+    readonly property string wallpapersFolder: pluginData.wallpapersFolder || "~/Pictures/Wallpapers"
 
     readonly property string currentWallpaper: pluginData.currentWallpaper || ""
-    
+
     readonly property bool thumbCacheReady: pluginData.thumbCacheReady || true;
-    
+
     readonly property string mpvSocket: pluginData.mpvSocket || "/tmp/mpv-socket"
-    
+
     readonly property bool hardwareAcceleration: pluginData.hardwareAcceleration || false
 
     readonly property bool isMuted: pluginData.isMuted || false
@@ -53,7 +53,7 @@ PluginComponent {
                 color: Theme.primary
                 anchors.horizontalCenter: parent.horizontalCenter
             }
-            
+
             StyledText {
                 text: "mpv"
                 font.pixelSize: Theme.fontSizeMedium
@@ -69,7 +69,7 @@ PluginComponent {
             id: popoutColumn
 
             headerText: "Wallpaper selector"
-            detailsText: "Click a wallpaper to select it"
+            detailsText: mpvpaper.currentWallpaper
             showCloseButton: false
 
             // StyledText {
@@ -86,7 +86,7 @@ PluginComponent {
                     anchors.fill: parent
                     // cellWidth: 50
                     // cellHeight: 50
-                    model:  wallpapersFolderModel
+                    model: wallpapersFolderModel
                     orientation: ListView.Vertical
                     delegate: Rectangle {
                         id: wallpaper
@@ -144,7 +144,7 @@ PluginComponent {
         id: mpvpaper
         // pluginApi: root.pluginApi
 
-        active : true
+        active: true
         // active: root.active
         currentWallpaper: root.currentWallpaper
         hardwareAcceleration: root.hardwareAcceleration
@@ -157,5 +157,5 @@ PluginComponent {
 
         // thumbnails: thumbnails
         // innerService: innerService
-    } 
+    }
 }

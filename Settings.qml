@@ -26,7 +26,7 @@ PluginSettings {
     StringSetting {
         settingKey: "wallpapersFolder"
         label: "Wallpapers Folder"
-        description: "blabla describe"
+        description: "The folder that contains all the wallpapers."
         placeholder: "~/Pictures/Wallpapers"
         defaultValue: "~/Pictures/Wallpapers"
     }
@@ -40,6 +40,7 @@ PluginSettings {
     ToggleSetting {
         settingKey: "hardwareAcceleration"
         label: I18n.tr("HardwareAcceleration")
+        description: "Enable hardware acceleration for mpv."
         defaultValue: false
     }
     
@@ -52,8 +53,8 @@ PluginSettings {
     StringSetting {
         settingKey: "mpvSocket"
         label: "Mpv socket"
-        description: "blabla describe"
-        placeholder: "/tmp/mpv-socket"
+        description: "The mpvpaper socket that the plugin will connect to."
+        placeholder: "Example: /tmp/mpv-socket"
         defaultValue: "/tmp/mpv-socket"
     }
 }
