@@ -72,11 +72,37 @@ PluginComponent {
             detailsText: mpvpaper.currentWallpaper
             showCloseButton: false
 
-            // StyledText {
-            //     text: root.wallpapersFolder
-            //     font.pixelSize: Theme.fontSizeSmall
-            //     color: Theme.surfaceText
+            StyledText {
+                text: root.wallpapersFolder + "/" + root.currentWallpaper
+                font.pixelSize: Theme.fontSizeSmall
+                color: Theme.surfaceText
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+            BorderImage {
+                anchors.fill: rectangle
+                anchors {
+                    leftMargin: -6
+                    topMargin: -6
+                    rightMargin: -8
+                    bottomMargin: -8
+                }
+                border {
+                    left: 10
+                    top: 10
+                    right: 10
+                    bottom: 10
+                }
+                width: 160
+                height: 100
+                source : "/home/lapin/tmp-mpvpaper/futuristic-city-pixel-moewalls-com.mp4.bmp"
+            }
+            // Image {
+            //     id: wallpaperImage
             //     anchors.horizontalCenter: parent.horizontalCenter
+            //     anchors.verticalCenter: parent.verticalCenter
+            //     anchors.fill: parent
+            //     width: 200
+            //     height: 200
             // }
             Item {
                 width: parent.width

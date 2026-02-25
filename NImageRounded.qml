@@ -10,7 +10,7 @@ Item {
     property real radius: 0
     property string imagePath: ""
     property string fallbackIcon: ""
-    property real fallbackIconSize: Style.fontSizeXXL
+    // property real fallbackIconSize: Style.fontSizeXXL
     property real borderWidth: 0
     property color borderColor: "transparent"
     property int imageFillMode: Image.PreserveAspectCrop
