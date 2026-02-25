@@ -155,7 +155,31 @@ PluginComponent {
         // fillMode: root.fillMode
         // volume: root.volume
 
-        // thumbnails: thumbnails
         // innerService: innerService
     }
+    
+    Thumbnails {
+        // Contains all the thumbnail specific functionality
+        id: thumbnails
+
+        currentWallpaper: root.currentWallpaper
+        thumbCacheReady: root.thumbCacheReady
+
+        folderModel: folderModel
+    }
+    
+    FolderListModel {
+        id: folderModel
+        folder: "file://" + root.wallpapersFolder
+        nameFilters: ["*.mp4", "*.avi", "*.mov"]
+        showDirs: false
+
+        onStatusChanged: {
+            if (folderModel.status === FolderListModel.Ready) {
+                // Generate all the thumbnails for the folder
+                thumbnails.thumbGeneration();
+            }
+        }
+    }
+
 }
