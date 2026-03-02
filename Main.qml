@@ -28,18 +28,18 @@ PluginComponent {
             spacing: Theme.spacingS
 
             DankIcon {
-                name: "widgets"
+                name: "wallpaper"
                 size: Theme.iconSize
                 color: Theme.primary
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            StyledText {
-                text: "mpv"
-                font.pixelSize: Theme.fontSizeMedium
-                color: Theme.surfaceText
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            // StyledText {
+            //     text: "mpv"
+            //     font.pixelSize: Theme.fontSizeMedium
+            //     color: Theme.surfaceText
+            //     anchors.verticalCenter: parent.verticalCenter
+            // }
         }
     }
 
@@ -48,19 +48,18 @@ PluginComponent {
             spacing: Theme.spacingXS
 
             DankIcon {
-                name: "widgets"
+                name: "wallpaper"
                 size: Theme.iconSize
                 color: Theme.primary
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
-            StyledText {
-                text: "mpv"
-                font.pixelSize: Theme.fontSizeMedium
-                color: Theme.surfaceText
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
+            // StyledText {
+            //     text: "mpv"
+            //     font.pixelSize: Theme.fontSizeMedium
+            //     color: Theme.surfaceText
+            //     anchors.verticalCenter: parent.verticalCenter
+            // }
         }
     }
 
@@ -78,93 +77,96 @@ PluginComponent {
                 color: Theme.surfaceText
                 anchors.horizontalCenter: parent.horizontalCenter
             }
-            BorderImage {
-                anchors.fill: rectangle
-                anchors {
-                    leftMargin: -6
-                    topMargin: -6
-                    rightMargin: -8
-                    bottomMargin: -8
-                }
-                border {
-                    left: 10
-                    top: 10
-                    right: 10
-                    bottom: 10
-                }
-                width: 160
-                height: 100
-                source : "/home/lapin/tmp-mpvpaper/futuristic-city-pixel-moewalls-com.mp4.bmp"
-            }
-            // Image {
-            //     id: wallpaperImage
-            //     anchors.horizontalCenter: parent.horizontalCenter
-            //     anchors.verticalCenter: parent.verticalCenter
-            //     anchors.fill: parent
-            //     width: 200
-            //     height: 200
-            // }
-            Item {
+            DankGridView {
                 width: parent.width
-                implicitHeight: root.popoutHeight - popoutColumn.headerHeight - popoutColumn.detailsHeight - Theme.spacingXL
-
-                DankListView {
-                    anchors.fill: parent
-                    // cellWidth: 50
-                    // cellHeight: 50
-                    model: wallpapersFolderModel
-                    orientation: ListView.Vertical
-                    delegate: Rectangle {
-                        id: wallpaper
-                        implicitWidth: ListView.view.width
-                        height: 40
-                        color: {
-                            if (wallpaperMouse && wallpaperMouse.containsMouse) {
-                                return Theme.surface
-                            }
-                            return "transparent"
-                        }
-                        required property string filePath
-                        required property string fileName
-
-                        StyledText {
-                            text: fileName
-                            font.pixelSize: Theme.fontSizeMedium
-                            color: Theme.surfaceText
-                            anchors.fill: parent
-                            anchors.leftMargin: Theme.spacingM
-                            anchors.rightMargin: Theme.spacingM
-                            verticalAlignment: Text.AlignVCenter
-                        }
-                        MouseArea {
-                            id: wallpaperMouse
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            cursorShape: Qt.PointingHandCursor
-
-                            onClicked: {
-                                // Quickshell.execDetached(["sh", "-c", "echo -n '" + modelData + "' | wl-copy"])
-                                ToastService.showInfo(fileName + " selected")
-                                mpvpaper.currentWallpaper = filePath
-                                popoutColumn.closePopout()
-                            }
-                        }
-                    }
-
-                    FolderListModel {
-                        id: wallpapersFolderModel
-                        folder: "file://" + root.wallpapersFolder
-                        nameFilters: ["*.mp4", "*.avi", "*.mov"]
-                        showDirs: false
+                height: 320
+                anchors.horizontalCenter: parent.horizontalCenter
+                cellWidth: 180
+                cellHeight: 120
+                model: wallpapersBmpFolder
+                delegate: BorderImage {
+                    id: preview
+                    required property string filePath
+                    source: filePath
+                    width: 160
+                    height: 100
+                    border {
+                        left: 10
+                        top: 10
+                        right: 10
+                        bottom: 10
                     }
                 }
             }
+
+            // Item {
+            //     width: parent.width
+            //     implicitHeight: root.popoutHeight - popoutColumn.headerHeight - popoutColumn.detailsHeight - Theme.spacingXL
+            //
+            //     DankListView {
+            //         anchors.fill: parent
+            //         // cellWidth: 50
+            //         // cellHeight: 50
+            //         model: wallpapersFolderModel
+            //         orientation: ListView.Vertical
+            //         delegate: Rectangle {
+            //             id: wallpaper
+            //             implicitWidth: ListView.view.width
+            //             height: 40
+            //             color: {
+            //                 if (wallpaperMouse && wallpaperMouse.containsMouse) {
+            //                     return Theme.surface
+            //                 }
+            //                 return "transparent"
+            //             }
+            //             required property string filePath
+            //             required property string fileName
+            //
+            //             StyledText {
+            //                 text: fileName
+            //                 font.pixelSize: Theme.fontSizeMedium
+            //                 color: Theme.surfaceText
+            //                 anchors.fill: parent
+            //                 anchors.leftMargin: Theme.spacingM
+            //                 anchors.rightMargin: Theme.spacingM
+            //                 verticalAlignment: Text.AlignVCenter
+            //             }
+            //             MouseArea {
+            //                 id: wallpaperMouse
+            //                 anchors.fill: parent
+            //                 hoverEnabled: true
+            //                 cursorShape: Qt.PointingHandCursor
+            //
+            //                 onClicked: {
+            //                     // Quickshell.execDetached(["sh", "-c", "echo -n '" + modelData + "' | wl-copy"])
+            //                     ToastService.showInfo(fileName + " selected")
+            //                     mpvpaper.currentWallpaper = filePath
+            //                     popoutColumn.closePopout()
+            //                 }
+            //             }
+            //         }
+            //
+            //     }
+            // }
         }
     }
 
-    popoutWidth: 400
-    popoutHeight: 500
+    popoutWidth: 600
+    popoutHeight: 700
 
+    FolderListModel {
+        id: wallpapersFolderModel
+        folder: "file://" + root.wallpapersFolder
+        nameFilters: ["*.mp4", "*.avi", "*.mov"]
+        showDirs: false
+    }
+    
+    FolderListModel {
+        id: wallpapersBmpFolder
+        folder: "file:///home/lapin/tmp-mpvpaper"
+        nameFilters: ["*.bmp"]
+        showDirs: false
+    }
     Mpvpaper {
         // Contains all the mpvpaper specific functionality
         id: mpvpaper
@@ -183,7 +185,7 @@ PluginComponent {
 
         // innerService: innerService
     }
-    
+
     Thumbnails {
         // Contains all the thumbnail specific functionality
         id: thumbnails
@@ -193,7 +195,7 @@ PluginComponent {
 
         folderModel: folderModel
     }
-    
+
     FolderListModel {
         id: folderModel
         folder: "file://" + root.wallpapersFolder
