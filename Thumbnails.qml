@@ -13,7 +13,7 @@ Item {
     required property bool thumbCacheReady
     required property FolderListModel folderModel
 
-    readonly property string thumbCacheFolder:  "/home/lapin/Vidéos/AnimatedWallpapers"
+    readonly property string thumbCacheFolder:  "/home/lapin/Vidéos/AnimatedWallpapers/.thumbnails"
     property int _thumbGenIndex: 0
 
     function getThumbPath(videoPath: string): string {
