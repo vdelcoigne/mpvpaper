@@ -163,7 +163,7 @@ PluginComponent {
     
     FolderListModel {
         id: wallpapersBmpFolder
-        folder: "file:///home/lapin/tmp-mpvpaper"
+        folder: "file:///home/lapin/Vidéos/AnimatedWallpapers"
         nameFilters: ["*.bmp"]
         showDirs: false
     }
